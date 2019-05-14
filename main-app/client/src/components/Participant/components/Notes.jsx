@@ -16,7 +16,7 @@ class Notes extends React.Component {
     };
   }
   componentDidUpdate = prevProps => {
-    // fetch all of users citations
+    // fetch all of users notes as an array
     if (prevProps.user !== this.props.user) {
       if (this.props.user.id) {
         this.getUserNotes()
@@ -31,7 +31,7 @@ class Notes extends React.Component {
   }
 
   onSuccess = data => {
-    this.setState({ loading: false, citations: data });
+    this.setState({ loading: false, notes: data });
   };
 
   onError = errorMessage => {
@@ -70,7 +70,7 @@ class Notes extends React.Component {
         <div className="notes-form">
             <DynamicFormContainer
                 key={`${notes.participant_id}_${notes.id}`}
-                initialData={notes}
+                initialData={notes[0]}
                 questions={NotesQA}
                 editableMode={true}
                 editableModeOn={true}
