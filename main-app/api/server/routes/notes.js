@@ -6,7 +6,7 @@ const jwtAuth = passport.authenticate('jwt', { session: false });
 module.exports = (app) => {
   app.get('/notes/:id', jwtAuth, (req, res) => {
     //  knex??
-    console.log(req.params.id);
-    res.status(200).send('hello');
+    console.log(req.params);
+    res.status(205).send('hello');
   });
 };

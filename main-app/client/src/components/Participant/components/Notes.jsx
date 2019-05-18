@@ -1,7 +1,7 @@
 import React from "react";
 import { DynamicFormContainer } from "components/DynamicForm";
 import NotesQA from "./Notes.data";
-// import getNotes from "api/getNotes.api";
+import getNotes from "api/getNotes.api";
 import "./Notes.scss";
 
 class Notes extends React.Component {
@@ -15,11 +15,16 @@ class Notes extends React.Component {
       editModeVisible: false,
     };
   }
+
+  componentDidMount = () => {
+    this.getUserNotes();
+  };
+
   componentDidUpdate = prevProps => {
     // fetch all of users notes as an array
     if (prevProps.user !== this.props.user) {
       if (this.props.user.id) {
-        this.getUserNotes()
+        this.getUserNotes();
       }
     }
   };
@@ -27,16 +32,18 @@ class Notes extends React.Component {
   getUserNotes = () => {
     let userId = this.props.user.id;
     this.setState({ userId });
-    // return getNotes(userId, this.onSuccess, this.onError);
+    return getNotes(userId, this.onSuccess, this.onError);
   }
 
   onSuccess = data => {
     this.setState({ loading: false, notes: data });
+    console.log(data);
   };
 
   onError = errorMessage => {
     this.setState({ error: errorMessage, loading: false });
     // return this.fetchUserCitations()
+    console.log(errorMessage);
   };
 
   postFormData = (formData) => {
