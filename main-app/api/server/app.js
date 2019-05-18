@@ -34,6 +34,7 @@ app.get('/', (req, res) => res.status(200).render('index'));
 require('./routes/participants')(app);
 require('./routes/citations')(app);
 require('./routes/users')(app);
+require('./routes/notes')(app);
 require('./auth/router')(app);
 
 module.exports = app;
