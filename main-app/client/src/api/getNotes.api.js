@@ -23,7 +23,22 @@ const getNotes = (userId, successFn, errorFn) => {
   }
 
   return axios
-    .get(`${API_BASE_URL}/participants/${userId}/notes`, config, {})
+    .get(`${API_BASE_URL}/notes/${userId}`, config, {
+      timeout: 3000,
+    })
+    .then(res => {
+      let { data } = res;
+      successFn(data);
+      return res;
+    })
+    .catch(err => {
+      let { message } = err;
+      if (err.code === 'ECONNABORTED') {
+        message = 'The request took too long - please try again later.';
+      }
+      errorFn(message);
+      return err;      
+    })
 
 }
 
