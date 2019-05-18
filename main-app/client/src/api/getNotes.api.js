@@ -34,7 +34,7 @@ const getNotes = (userId, successFn, errorFn) => {
     .catch(err => {
       let { message } = err;
       if (err.code === 'ECONNABORTED') {
-        message = 'The request took too long - please try again later.';
+        message = 'The notes request took too long - please try again later.';
       }
       errorFn(message);
       return err;      

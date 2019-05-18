@@ -7,6 +7,6 @@ module.exports = (app) => {
   app.get('/notes/:id', jwtAuth, (req, res) => {
     //  knex??
     console.log(req.params);
-    res.status(205).send('hello');
+    res.status(200).send(req.params);
   });
 };
