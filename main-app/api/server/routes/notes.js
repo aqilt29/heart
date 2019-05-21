@@ -12,6 +12,13 @@ module.exports = (app) => {
     res.status(200).send(notes);
   });
 
+  //  post a new note to the participant
+  app.post('/note/:participantId', jwtAuth, (req, res) => {
+    // knex???
+    console.log('response: note here');
+    res.status(201).send('note good');
+  });
+
   //  get an individual note by note id
   app.get('/note/:noteId', jwtAuth, (req, res) => {
     // knex???
