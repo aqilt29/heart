@@ -1,0 +1,42 @@
+module.exports = [
+  {
+    _id: 1,
+    text: 'this is the first note!!!',
+    dateCreated: Date.now(),
+    dateLastEdit: null,
+    status: 'Open',
+    beingEditedBy: 1,
+  },
+  {
+    _id: 2,
+    text: 'this is the second note!!!',
+    dateCreated: Date.now(),
+    dateLastEdit: null,
+    status: 'Open',
+    beingEditedBy: 1,
+  },
+  {
+    _id: 3,
+    text: 'this is the third note!!!',
+    dateCreated: Date.now(),
+    dateLastEdit: null,
+    status: 'Open',
+    beingEditedBy: 1,
+  },
+  {
+    _id: 4,
+    text: 'this is the fourth note!!!',
+    dateCreated: Date.now(),
+    dateLastEdit: null,
+    status: 'Closed',
+    beingEditedBy: 1,
+  },
+  {
+    _id: 5,
+    text: 'this is the fifth note!!!',
+    dateCreated: Date.now(),
+    dateLastEdit: null,
+    status: 'Open',
+    beingEditedBy: 1,
+  },
+];
