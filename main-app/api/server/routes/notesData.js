@@ -5,6 +5,7 @@ module.exports = [
     dateCreated: Date.now(),
     dateLastEdit: null,
     status: 'Open',
+    participantId: 1,
     beingEditedBy: 1,
   },
   {
@@ -13,6 +14,7 @@ module.exports = [
     dateCreated: Date.now(),
     dateLastEdit: null,
     status: 'Open',
+    participantId: 1,
     beingEditedBy: 1,
   },
   {
@@ -21,6 +23,7 @@ module.exports = [
     dateCreated: Date.now(),
     dateLastEdit: null,
     status: 'Open',
+    participantId: 1,
     beingEditedBy: 1,
   },
   {
@@ -29,6 +32,7 @@ module.exports = [
     dateCreated: Date.now(),
     dateLastEdit: null,
     status: 'Closed',
+    participantId: 1,
     beingEditedBy: 1,
   },
   {
@@ -37,6 +41,7 @@ module.exports = [
     dateCreated: Date.now(),
     dateLastEdit: null,
     status: 'Open',
+    participantId: 1,
     beingEditedBy: 1,
   },
 ];

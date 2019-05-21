@@ -10,7 +10,7 @@ class Notes extends React.Component {
     this.state = {
       loading: false,
       error: false,
-      notes: {},
+      notes: [],
       userId: null,
       editModeVisible: false,
     };
