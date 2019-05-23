@@ -48,17 +48,17 @@ CREATE TABLE participants(
    FOREIGN KEY (participant_id) REFERENCES participants (id)
  );
 
- CREATE TYPE status AS ENUM ('open', 'closed');
- CREATE TABLE notes(
+ CREATE TYPE note_status AS ENUM ('open', 'closed');
+ CREATE TABLE notes (
    id SERIAL PRIMARY KEY,
    note_text TEXT,
    created_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
-   last_updated_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
-   view_status status,
+   last_updated_at TIMESTAMPTZ DEFAULT NULL,
+   view_status note_status DEFAULT 'open',
    participant_id INTEGER,
    being_edited_by INTEGER,
    FOREIGN KEY (participant_id) REFERENCES participants (id),
-   FOREIGN KEY (being_edited_by) REFERENCES participants (id),
+   FOREIGN KEY (being_edited_by) REFERENCES participants (id)
  );
 
 -- Trigger function to update updated_at timestamp

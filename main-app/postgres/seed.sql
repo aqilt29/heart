@@ -78,3 +78,21 @@ INSERT INTO users (
   'demo',
   '$2a$10$tW3KLuaVGGKLxfOjWcBAGu5v/W/HwEQY8ZxhMgqezRyJtTibcgDBW'
 );
+
+-- INSERT INTO notes (
+--   note_text,
+--   view_status
+-- );
+
+
+-- CREATE TABLE notes(
+--    id SERIAL PRIMARY KEY,
+--    note_text TEXT,
+--    created_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
+--    last_updated_at TIMESTAMPTZ DEFAULT NULL,
+--    view_status note_status,
+--    participant_id INTEGER,
+--    being_edited_by INTEGER,
+--    FOREIGN KEY (participant_id) REFERENCES participants (id),
+--    FOREIGN KEY (being_edited_by) REFERENCES participants (id),
+--  );
