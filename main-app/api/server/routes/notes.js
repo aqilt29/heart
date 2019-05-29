@@ -1,3 +1,4 @@
+/* eslint-disable camelcase */
 const passport = require('passport');
 const knex = require('../config/knex_config.js');
 
@@ -15,9 +16,12 @@ module.exports = (app) => {
 
   //  post a new note to the participant
   app.post('/note/:participantId', jwtAuth, (req, res) => {
-    // knex???
-    console.log('response: note here');
-    res.status(201).send('note good');
+    //  using snakecase for deconstruction neatness
+    const { participant_id, note_text } = req.body;
+
+    knex('notes').insert({ participant_id, note_text }, ['id'])
+      .then(id => res.status(201).send(id))
+      .catch(err => res.status(500).send(err));
   });
 
   //  get an individual note by note id

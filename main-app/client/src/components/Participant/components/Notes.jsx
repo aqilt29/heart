@@ -2,6 +2,7 @@ import React from "react";
 import { DynamicFormContainer } from "components/DynamicForm";
 import NotesQA from "./Notes.data";
 import getNotes from "api/getNotes.api";
+import addNotes from "api/addNotes.api";
 import "./Notes.scss";
 
 class Notes extends React.Component {
@@ -17,7 +18,9 @@ class Notes extends React.Component {
   }
 
   componentDidMount = () => {
-    this.getUserNotes();
+    this.setState({ userId: this.props.user.id}, () => {
+      this.getUserNotes();
+    });
   };
 
   componentDidUpdate = prevProps => {
@@ -42,25 +45,19 @@ class Notes extends React.Component {
 
   onError = errorMessage => {
     this.setState({ error: errorMessage, loading: false });
-    // return this.fetchUserCitations()
     console.log(errorMessage);
   };
 
-  postFormData = (formData) => {
-    this.setState({ loading: true, error: null });
+  postFormData = ({ notes: note_text }) => {
     let { userId } = this.state;
-    if (formData.participant_id) {
-    //   return updateCitation(
-    //     { id: userId, data: formData, citationId: formData.id },
-    //     this.onSuccess,
-    //     this.onError
-    //   );
-    } 
-    // return addCitation(
-    //     { id: userId, data: formData },
-    //     this.onSuccess,
-    //     this.onError
-    // );
+    addNotes({ userId, note_text }, (data) => {
+      console.log('success post:', data)
+      getNotes(userId, this.onSuccess, this.onError);
+    }, (message) => {
+      console.log('fail post', message)
+    })
+    this.setState({ loading: true, error: null });
+
     this.toggleEdit()
   };
 
@@ -77,7 +74,7 @@ class Notes extends React.Component {
         <div className="notes-form">
             <DynamicFormContainer
                 key={`${notes.participant_id}_${notes.id}`}
-                initialData={notes[0]}
+                initialData={""}
                 questions={NotesQA}
                 editableMode={true}
                 editableModeOn={true}
