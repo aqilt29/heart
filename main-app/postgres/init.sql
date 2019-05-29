@@ -43,7 +43,7 @@ CREATE TABLE participants(
    violations VARCHAR(50) [],
    citation_status VARCHAR(20),
    created_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
-   updated_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
+   updated_at TIMESTAMPTZ DEFAULT NULL,
    participant_id INTEGER,
    FOREIGN KEY (participant_id) REFERENCES participants (id)
  );
@@ -55,8 +55,8 @@ CREATE TABLE participants(
    created_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
    last_updated_at TIMESTAMPTZ DEFAULT NULL,
    view_status note_status DEFAULT 'open',
-   participant_id INTEGER,
-   being_edited_by INTEGER,
+   participant_id INTEGER NOT NULL,
+   being_edited_by INTEGER DEFAULT NULL,
    FOREIGN KEY (participant_id) REFERENCES participants (id),
    FOREIGN KEY (being_edited_by) REFERENCES participants (id)
  );

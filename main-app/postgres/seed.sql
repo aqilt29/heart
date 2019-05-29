@@ -79,10 +79,29 @@ INSERT INTO users (
   '$2a$10$tW3KLuaVGGKLxfOjWcBAGu5v/W/HwEQY8ZxhMgqezRyJtTibcgDBW'
 );
 
--- INSERT INTO notes (
---   note_text,
---   view_status
--- );
+INSERT INTO notes (
+  note_text,
+  participant_id
+) VALUES (
+  'THIS IS THE FIRST NOTE',
+  1
+);
+
+INSERT INTO notes (
+  note_text,
+  participant_id
+) VALUES (
+  'THIS IS THE 2nd NOTE',
+  1
+);
+
+INSERT INTO notes (
+  note_text,
+  participant_id
+) VALUES (
+  'THIS IS THE 3rdth NOTE',
+  1
+);
 
 
 -- CREATE TABLE notes(
