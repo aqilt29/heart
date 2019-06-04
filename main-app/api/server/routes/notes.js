@@ -25,10 +25,14 @@ module.exports = (app) => {
   });
 
   //  get an individual note by note id
-  app.get('/note/:noteId', jwtAuth, (req, res) => {
-    // knex???
-    console.log('response: note here');
-    res.status(200).send(['hi']);
+  app.get('/note/:id', jwtAuth, (req, res) => {
+    const { id } = req.params;
+
+    knex('notes').where('id', id).select()
+      .then((note) => {
+        res.status(200).send(note[0]);
+      })
+      .catch(err => res.status(500).send(err));
   });
 
   //  put to edit an individual note by note id
