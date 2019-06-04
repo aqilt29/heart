@@ -50,8 +50,8 @@ class Notes extends React.Component {
 
   postFormData = ({ notes: note_text }) => {
     let { userId } = this.state;
-    addNotes({ userId, note_text }, (data) => {
-      console.log('success post:', data)
+    addNotes({ userId, note_text }, ({ id: noteId }) => {
+      console.log('success post:', noteId)
       getNotes(userId, this.onSuccess, this.onError);
     }, (message) => {
       console.log('fail post', message)

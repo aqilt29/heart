@@ -20,7 +20,7 @@ module.exports = (app) => {
     const { participant_id, note_text } = req.body;
 
     knex('notes').insert({ participant_id, note_text }, ['id'])
-      .then(id => res.status(201).send(id))
+      .then(([id]) => res.status(201).send(id))
       .catch(err => res.status(500).send(err));
   });
 
