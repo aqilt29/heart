@@ -29,9 +29,7 @@ module.exports = (app) => {
     const { id } = req.params;
 
     knex('notes').where('id', id).select()
-      .then((note) => {
-        res.status(200).send(note[0]);
-      })
+      .then(note => res.status(200).send(note[0]))
       .catch(err => res.status(500).send(err));
   });
 
